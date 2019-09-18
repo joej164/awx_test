@@ -12,3 +12,13 @@
           - joe_color
           - joe_name
           - joe_quest
+    
+    - name: output more data
+      debug:
+        var: {{ item }}
+      with_items:
+       - out.stdout
+       - joe_color
+       - joe_name
+       - joe_quest
+
