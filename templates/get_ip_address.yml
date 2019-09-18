@@ -1,8 +1,10 @@
-tasks:
-  - name: run a command
-    shell: ip address
-    register: out
+- name: Joe's test playbook
+  hosts: all
+  tasks:
+    - name: run a command
+      shell: ip address
+      register: out
 
-  - name: output data
-    debug:
-      var: out.stdout
+    - name: output data
+      debug:
+        var: out.stdout
