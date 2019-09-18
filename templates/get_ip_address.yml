@@ -18,11 +18,16 @@
            - joe_name
            - joe_quest
           when: joe_color is defined
-        
+ 
+        - name: debug key
+          debug:
+            var: secret_key
+
         - name: pull down the repo
           git:
             repo: git@github.com:joej164/awx_test.git
             dest: awx_test
+            key_file: "{{ secret_key }}"
 
         - name: fill out the git user id settings
           git_config:
