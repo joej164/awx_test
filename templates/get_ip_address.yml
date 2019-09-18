@@ -16,19 +16,25 @@
        - joe_name
        - joe_quest
       when: joe_color is defined
-
-    - name: fill out a template
-      template:
-        src: test_template.j2
-        dest: test_out.txt
-
+    
     - name: pull down the repo
       git:
         repo: git@github.com:joej164/awx_test.git
         dest: awx_test
-    
+
+    - name: fill out a template
+      template:
+        src: test_template.j2
+        dest: awx_test/output/test_out.txt
+
+    - name:
+      assert: 
+        that: False
+
     - name: add the file
       shell: "{{ item }}"
+      args:
+        chdir: awx_test
       with_items:
         - "git add test_out.txt"
         - "git commit -m 'adding test file'"
