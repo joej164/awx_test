@@ -7,4 +7,8 @@
 
     - name: output data
       debug:
-        var: out.stdout
+        var: 
+          - out.stdout
+          - joe_color
+          - joe_name
+          - joe_quest
