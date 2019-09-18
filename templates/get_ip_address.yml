@@ -15,7 +15,7 @@
     
     - name: output more data
       debug:
-        var: {{ item }}
+        var: "{{ item }}"
       with_items:
        - out.stdout
        - joe_color
