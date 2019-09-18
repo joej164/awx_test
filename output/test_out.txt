@@ -1,4 +1,4 @@
 The color is: Green 
 The name is: Bob
-The quest is: discover
+The quest is: discovery
 
