@@ -1,15 +1,12 @@
 - name: Joe's awesome test playbook
-  hosts: all
+  hosts: localhost
+  connection: local
   tasks:
-    - name: run a command
-      shell: ip address
-      register: out
-
     - name: output data
       debug:
         var: 
           out
-    
+     
     - name: output more data
       debug:
         var: "{{ item }}"
@@ -17,6 +14,7 @@
        - joe_color
        - joe_name
        - joe_quest
+      when: joe_color is defined
 
     - name: local os
       shell: ls -al
