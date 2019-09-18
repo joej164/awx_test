@@ -21,7 +21,7 @@
         
         - name: pull down the repo
           git:
-            repo: https://github.com/joej164/awx_test.git
+            repo: git@github.com:joej164/awx_test.git
             dest: awx_test
 
         - name: fill out the git user id settings
