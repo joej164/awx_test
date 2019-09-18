@@ -24,6 +24,29 @@
             repo: https://github.com/joej164/awx_test.git
             dest: awx_test
 
+        - name: fill out the git user id settings
+          git_config:
+            list_all: yes
+            repo: awx_test
+          register: git_settings
+
+        - name: debug git
+          debug:
+            var: git_settings
+        
+        - name: set the git_config email 
+          git_config:
+            name: user.email
+            value: awx@ignw.io
+        
+        - name: set the git_config name
+          git_config:
+            name: user.name
+            value: AWX Server
+
+        - assert:
+            that: False
+
         - name: fill out a template
           template:
             src: test_template.j2
