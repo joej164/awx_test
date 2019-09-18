@@ -2,6 +2,12 @@
   hosts: localhost
   connection: local
   tasks:
+    - name: get the local directory
+      shell: ls -al
+      register: out
+    - name: print out the variables
+      debug:
+        var: out
     - name: output more data
       debug:
         var: "{{ item }}"
@@ -15,3 +21,11 @@
       template:
         src: test_template.j2
         dest: test_out.txt
+
+    - name: get the local directory
+      shell: ls -al
+      register: out
+    - name: print out the variables
+      debug:
+        var: out
+
