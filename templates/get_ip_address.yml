@@ -2,11 +2,6 @@
   hosts: localhost
   connection: local
   tasks:
-    - name: output data
-      debug:
-        var: 
-          out
-     
     - name: output more data
       debug:
         var: "{{ item }}"
@@ -16,11 +11,7 @@
        - joe_quest
       when: joe_color is defined
 
-    - name: local os
-      shell: ls -al
-      register: ls_out
-
-    - name: output results
-      debug:
-        var: ls_out
-
+    - name: fill out a template
+      template:
+        src: test_template.j2
+        dest: test_out.txt
