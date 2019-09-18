@@ -29,3 +29,19 @@
       debug:
         var: out
 
+    - name: is git installed?
+      shell: git --version
+      register: out
+
+    - name: print it out
+      debug:
+        var: out
+
+    - name: git status
+      shell: git status
+      register: out
+ 
+    - name: print it out again
+      debug:
+        var: out
+ 
