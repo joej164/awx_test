@@ -22,26 +22,15 @@
         src: test_template.j2
         dest: test_out.txt
 
-    - name: get the local directory
-      shell: ls -al
-      register: out
-    - name: print out the variables
-      debug:
-        var: out
+    - name: pull down the repo
+      git:
+        repo: git@github.com:joej164/awx_test.git
+        dest: awx_test
+    
+    - name: add the file
+      shell: "{{ item }}"
+      with_items:
+        - "git add test_out.txt"
+        - "git commit -m 'adding test file'"
+        - "git push origin master"
 
-    - name: is git installed?
-      shell: git --version
-      register: out
-
-    - name: print it out
-      debug:
-        var: out
-
-    - name: git status
-      shell: git status
-      register: out
- 
-    - name: print it out again
-      debug:
-        var: out
- 
