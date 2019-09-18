@@ -1,0 +1,8 @@
+tasks:
+  - name: run a command
+    shell: ip address
+    register: out
+
+  - name: output data
+    debug:
+      var: out.stdout
