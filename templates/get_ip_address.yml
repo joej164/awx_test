@@ -1,4 +1,4 @@
-- name: Joe's test playbook
+- name: Joe's awesome test playbook
   hosts: all
   tasks:
     - name: run a command
@@ -8,17 +8,21 @@
     - name: output data
       debug:
         var: 
-          - out.stdout
-          - joe_color
-          - joe_name
-          - joe_quest
+          out
     
     - name: output more data
       debug:
         var: "{{ item }}"
       with_items:
-       - out.stdout
        - joe_color
        - joe_name
        - joe_quest
+
+    - name: local os
+      shell: ls -al
+      register: ls_out
+
+    - name: output results
+      debug:
+        var: ls_out
 
