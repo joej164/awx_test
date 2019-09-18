@@ -44,9 +44,6 @@
             name: user.name
             value: AWX Server
 
-        - assert:
-            that: False
-
         - name: fill out a template
           template:
             src: test_template.j2
