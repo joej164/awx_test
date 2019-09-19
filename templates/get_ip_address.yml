@@ -22,12 +22,28 @@
         - name: debug key
           debug:
             var: secret_key
+        
+        - name: set the git_config email 
+          git_config:
+            name: user.email
+            value: awx@ignw.io
+        
+        - name: set the git_config name
+          git_config:
+            name: user.name
+            value: AWX Server
 
-        - name: pull down the repo
-          git:
-            repo: git@github.com:joej164/awx_test.git
-            dest: awx_test
-            key_file: "{{ secret_key }}"
+            # - name: pull down the repo
+            # git:
+            # repo: git@github.com:joej164/awx_test.git
+            # dest: awx_test
+            # key_file: "{{ secret_key }}"
+        
+        - name: test git creds
+          shell: ssh -i {{ secret_key }} git@github.com 
+
+        - assert:
+            that: False
 
         - name: fill out the git user id settings
           git_config:
@@ -39,15 +55,6 @@
           debug:
             var: git_settings
         
-        - name: set the git_config email 
-          git_config:
-            name: user.email
-            value: awx@ignw.io
-        
-        - name: set the git_config name
-          git_config:
-            name: user.name
-            value: AWX Server
 
         - name: fill out a template
           template:
