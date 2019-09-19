@@ -23,8 +23,6 @@
           debug:
             var: secret_key
 
-        - debug: msg="the value of secret_key is {{lookup('file', '{{ secret_key}}') }}"
-
         - name: pull down the repo
           git:
             repo: git@github.com:joej164/awx_test.git
@@ -43,7 +41,10 @@
             var: hostvars 
         
         - debug:
-            var: hostvars[inventory_hostname]
+            var: hostvars['localhost']
+        
+        - debug:
+            var: hostvars['localhost'].keys() | search('joe')
 
         - name: fail here
           assert:
