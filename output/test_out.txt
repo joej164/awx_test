@@ -1,4 +1,4 @@
-The color is: Green 
-The name is: Bob
-The quest is: discovery
+The color is: red 
+The name is: dgfsf
+The quest is: to search for the holy grail
 
