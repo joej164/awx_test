@@ -44,7 +44,12 @@
             var: hostvars['localhost']
         
         - debug:
-            var: hostvars['localhost'].keys() | search('joe')
+            var: hostvars['localhost'].keys()
+        
+        - debug:
+            var: {{ item }}
+          with_items: hostvars['localhost'].keys()
+          when: 'joe' in {{ item }}
 
         - name: fail here
           assert:
