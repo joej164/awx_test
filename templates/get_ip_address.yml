@@ -36,6 +36,13 @@
             src: test_template.j2
             dest: awx_test/output/test_out.txt
 
+        - debug:
+            var: ansible_facts
+
+        - name: fail here
+          assert:
+            that: False
+
         - name: add the file
           shell: "{{ item }}"
           args:
