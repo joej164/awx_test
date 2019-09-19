@@ -1,5 +1,18 @@
 ---
-joe_color: blue
-joe_name: joe da man
+joe_areaa: 'some text here
+
+
+    this is neat
+
+
+    how will this render'
+joe_boolean: 'True'
+joe_color: red
+joe_multi:
+- 'No'
+- Maybe
+- Possibly
+joe_name: joe
+joe_pass: p@55word
 joe_quest: to search for the holy grail
 ...
