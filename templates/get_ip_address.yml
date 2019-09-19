@@ -53,7 +53,7 @@
         - name: make list
           set_fact:
             template_vars: "{{ template_vars + [ item ]}}"
-          with_items: hostvars['localhost'].keys() 
+          with_items: "{{ hostvars['localhost'].keys() }}"
 
         - name: debug
           debug:
