@@ -4,20 +4,6 @@
   tasks:
     - name: Clone repo, update file, delete repo
       block:
-        - name: get the local directory
-          shell: ls -al
-          register: out
-        - name: print out the variables
-          debug:
-            var: out
-        - name: output more data
-          debug:
-            var: "{{ item }}"
-          with_items:
-           - joe_color
-           - joe_name
-           - joe_quest
-          when: joe_color is defined
  
         - name: debug key
           debug:
@@ -29,40 +15,16 @@
             dest: awx_test
             key_file: "{{ secret_key }}"
         
+        - name: make output dictionary
+          set_fact:
+            template_vars: "{{ template_vars|default([]) | combine({item.key: item.value}) }}"
+          with_dict: "{{ hostvars['localhost'] }}"
+          when: "'joe' in item.key"
+        
         - name: fill out a template
           template:
             src: test_template.j2
             dest: awx_test/output/test_out.txt
-
-        - debug:
-            var: ansible_facts
-        
-        - debug:
-            var: hostvars 
-        
-        - debug:
-            var: hostvars['localhost']
-        
-        - debug:
-            var: hostvars['localhost'].keys()
-        
-        - name: variable
-          set_fact:
-            template_vars: []
-
-        - name: make list
-          set_fact:
-            template_vars: "{{ template_vars + [ item ]}}"
-          with_items: "{{ hostvars['localhost'].keys() }}"
-          when: "'joe' in item"
-
-        - name: debug
-          debug:
-            var: template_vars
-
-        - name: fail here
-          assert:
-            that: False
 
         - name: add the file
           shell: "{{ item }}"
