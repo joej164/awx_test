@@ -54,6 +54,7 @@
           set_fact:
             template_vars: "{{ template_vars + [ item ]}}"
           with_items: "{{ hostvars['localhost'].keys() }}"
+          when: 'joe' in item
 
         - name: debug
           debug:
