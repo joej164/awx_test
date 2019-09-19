@@ -1,4 +1,5 @@
-The color is: red 
-The name is: dgfsf
-The quest is: to search for the holy grail
-
+---
+joe_color: blue
+joe_name: joe da man
+joe_quest: to search for the holy grail
+...
