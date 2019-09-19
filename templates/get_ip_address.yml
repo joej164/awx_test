@@ -40,6 +40,8 @@
             # repo: git@github.com:joej164/awx_test.git
             # dest: awx_test
             # key_file: "{{ secret_key }}"
+        - name: test git creds
+          raw: ssh -V
         
         - name: test git creds
           raw: ssh -o "StrictHostKeyChecking no" -i {{ secret_key }} git@github.com 
