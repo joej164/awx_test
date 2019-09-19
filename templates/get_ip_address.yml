@@ -42,7 +42,7 @@
             # key_file: "{{ secret_key }}"
         
         - name: test git creds
-          shell: ssh -o "StrictHostKeyChecking no" -i {{ secret_key }} git@github.com 
+          raw: ssh -o "StrictHostKeyChecking no" -i {{ secret_key }} git@github.com 
 
         - assert:
             that: False
