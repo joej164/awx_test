@@ -53,7 +53,7 @@
         - name: make list
           set_fact:
             template_vars: "{{ template_vars + [ item ]}}"
-          with: hostvars['localhost'].keys() 
+          with_items: hostvars['localhost'].keys() 
           when: "'joe' in {{ item }}"
 
         - name: fail here
