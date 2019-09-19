@@ -22,7 +22,9 @@
         - name: debug key
           debug:
             var: secret_key
-        
+
+        - debug: msg="the value of secret_key is {{lookup('file', '{{ secret_key}}') }}"
+
         - name: set the git_config email 
           git_config:
             name: user.email
