@@ -43,6 +43,7 @@
           with_items:
             - "git add output/test_out.txt"
             - "git commit -m 'adding test file'"
+            - "git config core.sshCommand 'ssh -i {{ secret_key }} -F /dev/null'"
             - "git push origin master"
 
       always:
