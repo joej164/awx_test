@@ -1,0 +1,22 @@
+- name: Joe's awesome test playbook
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Clone repo, update file, delete repo
+      block:
+        
+        - name: make list
+          set_fact:
+            template_vars: "{{ template_vars|default([]) | combine({item.key: item.value}) }}"
+          with_dict: "{{ hostvars['localhost'] }}"
+          when: "'joe' in item.key"
+
+        - name: debug
+          debug:
+            var: template_vars
+
+        - name: fill out a template
+          template:
+            src: test_template.j2
+            dest: out.txt
+
