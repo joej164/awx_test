@@ -31,12 +31,6 @@
             dest: awx_test
             key_file: "{{ secret_key }}"
         
-        - name: test git creds
-          raw: ssh -o "StrictHostKeyChecking no" -i {{ secret_key }} git@github.com 
-
-        - assert:
-            that: False
-
         - name: fill out a template
           template:
             src: test_template.j2
