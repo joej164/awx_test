@@ -47,7 +47,7 @@
             var: hostvars['localhost'].keys()
         
         - debug:
-            var: {{ item }}
+            var: "{{ item }}"
           with_items: hostvars['localhost'].keys()
           when: "'joe' in {{ item }}"
 
