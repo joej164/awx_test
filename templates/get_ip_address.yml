@@ -46,10 +46,15 @@
         - debug:
             var: hostvars['localhost'].keys()
         
-        - debug:
-            var: "{{ item }}"
-          with_items: hostvars['localhost'].keys()
-          when: "'joe' in item"
+        - name: variable
+          set_fact:
+            template_vars: []
+
+        - name: make list
+          set_fact:
+            template_vars: "{{ template_vars + [ item ]}}"
+          with: hostvars['localhost'].keys() 
+          when: "'joe' in {{ item }}"
 
         - name: fail here
           assert:
