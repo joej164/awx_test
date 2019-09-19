@@ -25,16 +25,6 @@
 
         - debug: msg="the value of secret_key is {{lookup('file', '{{ secret_key}}') }}"
 
-        - name: set the git_config email 
-          git_config:
-            name: user.email
-            value: awx@ignw.io
-        
-        - name: set the git_config name
-          git_config:
-            name: user.name
-            value: AWX Server
-
             # - name: pull down the repo
             # git:
             # repo: git@github.com:joej164/awx_test.git
