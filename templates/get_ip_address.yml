@@ -38,6 +38,12 @@
 
         - debug:
             var: ansible_facts
+        
+        - debug:
+            var: hostvars 
+        
+        - debug:
+            var: hostvars[inventory_hostname]
 
         - name: fail here
           assert:
